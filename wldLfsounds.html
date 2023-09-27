@@ -1,0 +1,81 @@
+<!--
+    1. HOW TO DOWNLOAD A FILE FROM INTERNET VIa LINK AND STORE IT IN FOLDER IN JS?
+    2. HOW TO REFER TO A VARIABLE FROM A JS FILE BY HTML? [through passing the js in htm as script, then pointing through 'id' or 'class' in js]
+    
+    3. RETREIVE THE FIRST RECORDING[0] AMONG THE ONES SHOWED-UP AFTER RESULT & UPON PRESSING 'NEXT', THE RECORDING AT POSITION[0+1] IS PLAYED.
+    THE OTHER DETAILS OF THAT BIRD/ANIMAL ARE ALSO DISPLAYED IN FRONTEND.
+    4. HOW TO HAVE A PARAMETER FUNCTION TO BE RUN onclick() onmousemove(). WHERE WILL THE PARAMS BE PASSED? IF IN HTML, HOW TO PASS THEM IN CODE AS WE KNOW THEM AND NOT THROUGH THE USER??
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIldlife Sounds</title>
+</head>
+<body id="sound1" type="module">
+
+    <script src="wldLfsounds.js">
+ 
+    </script>
+</body>
+<body id="sond"> <div>Bird Name:
+    <input type="text" placeholder="Enter name" onblur="getVal1()" id="en"></div>
+    <div> Country:
+    <input type="text" placeholder="Enter country" onblur="getVal2()" id="cnt"></div>
+    <div>generic name of the species:
+    <input type="text" placeholder="e.g. Procnias" onblur="getVal3()" id="gen"></div>
+    <div>species group:
+    <input type="text" placeholder="(soundscape(0), birds(1), grasshoppers(2), bats(3))" onblur="getVal4()" id="grp"></div>
+    <div>Quality:
+    <input type="text" placeholder="(A,B,C,D,E)" onblur="getVal6()" id="q"></div>
+    <div>Sex:
+    <input type="text" placeholder="(male, female, uncertain)" onblur="getVal7()" id="sex"></div>
+    <div>Bird Seen:
+    <input type="text" placeholder="(yes, no)" onblur="getVal8()" id="bird-seen"></div>
+    <!--<div>Species:    (NOT recognized in URL and accessing in docs: https://xeno-canto.org/help/search )
+    <input type="text" placeholder="e.g, averano" onblur="getVal12()" id="sp"></div>-->
+    <div>Stage:
+    <input type="text" placeholder="adult, juvenile, nestling, nymph, subadult" onblur="getVal13()" id="stage"></div>
+    <div>subspecies name:
+    <input type="text" placeholder="" onblur="getVal14()" id="ssp"></div>
+
+    <div>Recordist name:
+    <input type="text" placeholder="e.g, JAYRSON ARAUJO DE OLIVEIRA" onblur="getVal5()" id="rec"></div>
+    <div>Latitude:
+    <input type="number" placeholder="e.g, -6.3761" onblur="getVal9()" id="lat"></div>
+    <div>Longitude:
+    <input type="number" placeholder="e.g, -47.1085" onblur="getVal10()" id="lon"></div>
+<!--    <div>Recording Length[THIS METHOD ISN'T YET RECOGNIZED BY URL. FILL BELOW THEM ONES INSTEAD]:
+    <input type="number" placeholder="minutes(in unit form) e.g, 2" onblur="getVal11_Min()" id="lengthMin">
+    <input type="number" placeholder="seconds(in unit form) e.g, 14" onblur="getVal11_Sec()" id="lengthSec"></div>-->
+    <div>Recording Length:
+    <input type="text" placeholder="12, 10-15, >13, =19.8" onblur="getVal17()" id="lenSec"></div>
+    <div>type of voice:
+    <input type="text" placeholder="(call, song)" onblur="getVal15()" id="type"></div><!--AT SOME PLACES, THIS STRING IS LITERALLY STORED LIKE {call, song}. SO IN THAT CASE, HOW WILL THE SYSTEM KNOW TO DISPLAY IT EVEN IF THE USER INPUTS ONLY OF THEM(LITERAL string won't do this automatically). -->
+    <div>Recordings since Date:
+    <input type="date" placeholder="2022-12-01" onblur="getVal16()" id="date"></div>
+<div>
+    <button onclick="DaTaActling()">Submit to fetch</button> <!--instead of fetchit(), an async that calls fetchit() init. -->
+</div>
+<div>
+<body>
+    <!-- <div><input id="smp1" type="number"> </input></div>to define one that'll be added on NEXT pressing-->
+      <div>Which Recording number from retreived DaTa for Audio?: <input id="smp" type="number" placeholder="11" onblur="getNmbRcrdn()"> </input></div>
+
+          <audio controls id="aud" class="controls" ><!--onmouseout="audioer()"-->
+    <source type="audio/mp3" />
+    <source type="audio/ogg" /> 
+    <button class="play" data-icon="P" aria-label="play pause toggle"> </button>
+    <button class="stop" data-icon="S" aria-label="stop"></button>
+    <button class="rwd" data-icon="B" aria-label="rewind"></button>
+    <button class="fwd" data-icon="F" aria-label="fast forward"></button>
+    <span aria-label="timer">00:00</span>
+</audio> 
+
+<!--NOT WORKING NEXT BUTTON AND NUMBER ADDER <div>How Much number to Jump Ahead?: <input id="smp1" type="number" placeholder="11" onblur="NxtAdder()"> </input></div>
+<button onclick="getNmbRcrdn(`${document.getElementById('smp').value}+${document.getElementById('smp1').value}`)" id="nxt" data-icon="N" aria-label="Next Recording">Next Recording</button> </div>-->
+<button onclick="nxtit()" id="nxt" data-icon="N" aria-label="Next Recording">Next Recording</button> </div>
+</body></body>
+</html>
